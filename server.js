@@ -18,6 +18,51 @@ async function getUsuarios(){
     console.log(usuarios)
 }
 
+getPaginationUsuarios()
+
+async function getPaginationUsuarios(){
+    const pageNumber = 2
+    const pageSize = 10
+
+    const usuarios = await Usuario
+        .find()
+        .skip((pageNumber-1)*pageSize)
+        .limit(pageSize)
+
+        console.log(usuarios)
+}
+
+searchUsuario(id)
+
+async function searchUsuario(id){
+    const usuario = await Usuario.findById(id)
+    if (!usuario) return
+
+    console.log(usuario)
+}
+
+updateUsuario(id)
+
+async function updateUsuario(id){
+    const usuario = await Usuario.findById(id)
+
+    if (!usuario) return
+
+    usuario.nombre = ''
+    usuario.apellidos = ''
+    usuario.puesto = ''
+ 
+const result = await usuario.save()
+    console.log(result)
+}
+
+deleteUsuario(id)
+
+async function deleteUsuario(id){
+    const result = await Usuario.deleteOne({_id: id})
+    console.log(result)
+}
+
 //createUsuario(); // para ejecutar la creacion cada que se corra el archivo
 async function createUsuario(){
     const usuario = new Usuario({
