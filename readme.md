@@ -23,3 +23,7 @@ db.dropDatabase()
 
 crear colección 
 db.createCollection('nombre')
+
+instalar monoose para conectar la api con mongodb atlas
+
+instalar dotenv para crear un ambiente de desarrollo
