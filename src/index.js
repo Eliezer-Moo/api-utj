@@ -14,6 +14,8 @@ app.get('/', (req, res)=>{
 
 //coneccion con mongodb atlas
 mongoose.connect(
-    "mongodb+srv://adminsa:<password>@cluster0.k3v3t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    process.env.MONGODB_URI)
+    .then(()=>{    console.log('conectado a mongodb atlas')})
+    .catch((error)=> console.error(error))
 
 app.listen(port, ()=> console.log('server escuchando en el puerto: ', port))
