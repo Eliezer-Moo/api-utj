@@ -3,9 +3,13 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 const app = express()
+const users = require('./routes/user')
 
 const port =process.env.PORT || 9000
 
+//middlewere
+app.use(express.json())
+app.use('/api', users)
 
 //ruta principal
 app.get('/', (req, res)=>{
