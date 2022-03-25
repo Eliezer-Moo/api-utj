@@ -27,5 +27,3 @@ db.createCollection('nombre')
 instalar monoose para conectar la api con mongodb atlas
 
 instalar dotenv para crear un ambiente de desarrollo
-
-MONGODB_URI=mongodb+srv://adminsa:Code2020_@cluster0.k3v3t.mongodb.net/smartaccess?retryWrites=true&w=majority
