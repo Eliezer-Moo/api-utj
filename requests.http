@@ -3,9 +3,30 @@ POST http://localhost:9000/api/usuarios HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre" : "Nikola",
-    "apellidos" : "Tesla",
-    "puesto" : "Inventor",
-    "usuario" : "NikTesla",
-    "status" : 1
+    "nombre" : "Carla",
+    "apellidos" : "Hernández",
+    "puesto" : "Fabricante",
+    "usuario" : "CHernandez",
+    "status" : false
 }
+
+###
+GET http://localhost:9000/api/usuarios HTTP/1.1
+
+###
+GET http://localhost:9000/api/usuarios/623ddb9d2fc794ccf62d633d HTTP/1.1
+
+###
+PUT http://localhost:9000/api/usuarios/623ddb9d2fc794ccf62d633d HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre" : "José Roberto",
+    "apellidos" : "Hernández",
+    "puesto" : "Fabricante",
+    "usuario" : "CHernandez",
+    "status" : false
+}
+
+###
+DELETE http://localhost:9000/api/usuarios/623ddc1cca57d9a94f651473 HTTP/1.1
