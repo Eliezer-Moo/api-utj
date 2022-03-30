@@ -3,10 +3,12 @@ POST http://localhost:9000/api/usuarios HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre" : "Carla",
-    "apellidos" : "Hernández",
+    "nombre" : "Nikola",
+    "apellidos" : "Tesla",
     "puesto" : "Fabricante",
-    "usuario" : "CHernandez",
+    "usuario" : "NTesla",
+    "role":"administrador",
+    "salas":"6244a318a897459420403a9e",
     "status" : false
 }
 
@@ -14,10 +16,10 @@ Content-Type: application/json
 GET http://localhost:9000/api/usuarios HTTP/1.1
 
 ###
-GET http://localhost:9000/api/usuarios/623ddb9d2fc794ccf62d633d HTTP/1.1
+GET http://localhost:9000/api/usuarios/6244821a50dccc75ad2b1f3 HTTP/1.1
 
 ###
-PUT http://localhost:9000/api/usuarios/623ddb9d2fc794ccf62d633d HTTP/1.1
+PUT http://localhost:9000/api/usuarios/623ddb9d2fc794ccf62d633 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -29,4 +31,17 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:9000/api/usuarios/623ddc1cca57d9a94f651473 HTTP/1.1
+DELETE http://localhost:9000/api/usuarios/62449973084d4ff3de1f86d8 HTTP/1.1
+
+###
+POST http://localhost:9000/api/salas HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre" : "Game Planet",
+    "aforo" : 588,
+    "status" : false
+}
+
+###
+GET http://localhost:9000/api/salas HTTP/1.1

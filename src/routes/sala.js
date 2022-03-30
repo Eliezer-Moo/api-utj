@@ -1,54 +1,51 @@
 const express = require('express')
-const mongoose = require('mongoose')
 /* const { append } = require('express/lib/response');
 const res = require('express/lib/response'); */
 const router = express.Router()
-const userSchema = require('../models/user')
+const salasSchema = require('../models/salas')
 
-const populate = {path:'salas', select:'nombre aforo'}
-//crear usuario
-router.post('/usuarios',  async(req, res) =>{
-    const user = await userSchema(req.body)
-    user
+//crear sala
+router.post('/salas',  async(req, res) =>{
+    const sala = await salasSchema(req.body)
+    sala
         .save()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message : error }))
 })
 
-//obtener todos los usuarios
-router.get('/usuarios',async(req, res)=>{
-    await userSchema
+//obtener todas las salas
+router.get('/salas',async(req, res)=>{
+    await salasSchema
         .find()
-        .populate(populate)
         .then((data) => res.json(data))
         .catch((error) => res.json({ message : error }))
 })
 
 //obtener por id
-router.get('/usuarios/:id',async(req, res)=>{
+router.get('/salas/:id',async(req, res)=>{
     const {id} = await req.params
-    userSchema
+    salasSchema
         .findById(id)
         .then((data) => res.json(data))
         .catch((error) => res.json({ message : error }))
 })
 
 //actualizar por id
-router.put('/usuarios/:id',(req, res)=>{
+router.put('/salas/:id',(req, res)=>{
     const {id} = req.params
-    const {nombre, apellidos, puesto, usuario, status} = req.body
+    const {nombre, aforo, status} = req.body
 
-    userSchema
-        .updateOne({_id:id},{ $set :{nombre, apellidos, puesto, usuario, status} })
+    salasSchema
+        .updateOne({_id:id},{ $set :{nombre, aforo, status} })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message : error }))
 })
 
 //eliminar por id
-router.delete('/usuarios/:id',(req, res)=>{
+router.delete('/salas/:id',(req, res)=>{
     const {id} = req.params
 
-    userSchema
+    salasSchema
         .deleteOne({_id:id})
         .then((data) => res.json(data))
         .catch((error) => res.json({ message : error }))
