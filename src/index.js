@@ -5,6 +5,7 @@ require('dotenv').config()
 const app = express()
 const users = require('./routes/user')
 const salas = require('./routes/sala')
+const auth = require('./routes/auth')
 
 const port =process.env.PORT || 9000
 
@@ -12,6 +13,7 @@ const port =process.env.PORT || 9000
 app.use(express.json())
 app.use('/api', users)
 app.use('/api', salas)
+app.use('/api', auth)
 
 //ruta principal
 app.get('/', (req, res)=>{

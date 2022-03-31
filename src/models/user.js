@@ -13,7 +13,12 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  usuario: {
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
     type: String,
     required: true,
   },
@@ -22,10 +27,12 @@ const userSchema = mongoose.Schema({
     enum: ["administrador", "editor", "vigilante"],
     required: true,
   },
-  salas: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Sala'
-  }],
+  salas: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Sala",
+    },
+  ],
 
   status: {
     type: Boolean,
