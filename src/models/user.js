@@ -4,11 +4,11 @@ const jwt = require("jsonwebtoken");
 const userSchema = mongoose.Schema({
     nombre: {
         type: String,
-        required: true,
+        required: true
     },
     apellidos: {
         type: String,
-        required: true,
+        required: true
     },
     puesto: {
         type: String,
@@ -17,26 +17,29 @@ const userSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
+        unique: true
     },
     password: {
         type: String,
-        required: true,
+        required: true
+    },
+    isAdmin: {
+        type: Boolean,
+        required: true
     },
     role: {
         type: String,
-        enum: ["administrador", "editor", "vigilante"],
-        required: true,
+        required: true
     },
     salas: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Sala",
+        ref: "Sala"
     }, ],
 
     status: {
         type: Boolean,
         default: true,
-        required: true,
+        required: true
     },
     fecha: { type: Date, default: Date.now },
 })
@@ -45,7 +48,9 @@ userSchema.methods.generateJWT = function() {
     return jwt.sign({
         _id: this._id,
         nombre: this.nombre,
-        puesto: this.puesto
+        puesto: this.puesto,
+        isAdmin: this.isAdmin,
+        role: this.role
     }, process.env.SECRET_KEY_JWT_API)
 }
 

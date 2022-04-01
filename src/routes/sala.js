@@ -1,5 +1,8 @@
 const express = require('express')
 const auth = require('../middleware/auth')
+const admin = require('../middleware/admin')
+const authorize = require('../middleware/role')
+const Role = require('../middleware/role')
     /* const { append } = require('express/lib/response');
     const res = require('express/lib/response'); */
 const router = express.Router()
@@ -15,7 +18,7 @@ router.post('/salas', auth, async(req, res) => {
 })
 
 //obtener todas las salas
-router.get('/salas', async(req, res) => {
+router.get('/salas', [auth, admin, authorize([Role.administrador, Role.user])], async(req, res) => {
     await salasSchema
         .find()
         .then((data) => res.json(data))
