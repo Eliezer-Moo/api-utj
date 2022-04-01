@@ -1,54 +1,55 @@
 const express = require('express')
-/* const { append } = require('express/lib/response');
-const res = require('express/lib/response'); */
+const auth = require('../middleware/auth')
+    /* const { append } = require('express/lib/response');
+    const res = require('express/lib/response'); */
 const router = express.Router()
 const salasSchema = require('../models/salas')
 
 //crear sala
-router.post('/salas',  async(req, res) =>{
+router.post('/salas', auth, async(req, res) => {
     const sala = await salasSchema(req.body)
     sala
         .save()
         .then((data) => res.json(data))
-        .catch((error) => res.json({ message : error }))
+        .catch((error) => res.json({ message: error }))
 })
 
 //obtener todas las salas
-router.get('/salas',async(req, res)=>{
+router.get('/salas', async(req, res) => {
     await salasSchema
         .find()
         .then((data) => res.json(data))
-        .catch((error) => res.json({ message : error }))
+        .catch((error) => res.json({ message: error }))
 })
 
 //obtener por id
-router.get('/salas/:id',async(req, res)=>{
-    const {id} = await req.params
+router.get('/salas/:id', async(req, res) => {
+    const { id } = await req.params
     salasSchema
         .findById(id)
         .then((data) => res.json(data))
-        .catch((error) => res.json({ message : error }))
+        .catch((error) => res.json({ message: error }))
 })
 
 //actualizar por id
-router.put('/salas/:id',(req, res)=>{
-    const {id} = req.params
-    const {nombre, aforo, status} = req.body
+router.put('/salas/:id', (req, res) => {
+    const { id } = req.params
+    const { nombre, aforo, status } = req.body
 
     salasSchema
-        .updateOne({_id:id},{ $set :{nombre, aforo, status} })
+        .updateOne({ _id: id }, { $set: { nombre, aforo, status } })
         .then((data) => res.json(data))
-        .catch((error) => res.json({ message : error }))
+        .catch((error) => res.json({ message: error }))
 })
 
 //eliminar por id
-router.delete('/salas/:id',(req, res)=>{
-    const {id} = req.params
+router.delete('/salas/:id', (req, res) => {
+    const { id } = req.params
 
     salasSchema
-        .deleteOne({_id:id})
+        .deleteOne({ _id: id })
         .then((data) => res.json(data))
-        .catch((error) => res.json({ message : error }))
+        .catch((error) => res.json({ message: error }))
 })
 
 module.exports = router
