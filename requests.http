@@ -3,12 +3,13 @@ POST http://localhost:9000/api/usuarios HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre" : "Tesla",
+    "nombre" : "Test",
     "apellidos" : "Lnx",
     "puesto" : "Fabricante",
-    "email":"tesla@tesla.com",
+    "email":"test01@tesla.com",
     "password":"123456",
-    "role":"administrador",
+    "isAdmin":true,
+    "role":["administrador","editor"],
     "salas":"6244a318a897459420403a9e",
     "status" : false
 }
@@ -36,8 +37,8 @@ DELETE http://localhost:9000/api/usuarios/6245f3205779bf00b00654e2 HTTP/1.1
 
 ###
 POST http://localhost:9000/api/salas HTTP/1.1
-Content-Type: application/json
-
+Content-Type: application/json 
+Authorization: token jdjdjdjdjdjd
 {
     "nombre" : "Game Planet",
     "aforo" : 588,
@@ -55,3 +56,9 @@ Content-Type: application/json
     "email": "ezer@tesla.com",
     "password" :"123456"
 }
+
+###
+POST url HTTP/1.1
+header name: header value
+
+content

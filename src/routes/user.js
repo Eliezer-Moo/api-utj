@@ -23,6 +23,7 @@ router.post("/usuarios", async(req, res) => {
         puesto: req.body.puesto,
         email: req.body.email,
         password: hashPass,
+        isAdmin: req.body.isAdmin,
         role: req.body.role,
         salas: req.body.salas,
         status: req.body.status,
