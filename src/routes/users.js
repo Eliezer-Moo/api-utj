@@ -5,17 +5,18 @@ const bcrypt = require('bcrypt')
     /* const { append } = require('express/lib/response');
     const res = require('express/lib/response'); */
 const router = express.Router();
+const userSchema = require("../schemas/users");
+const validate = require("../middleware/validateData");
 const {getAll, createOne, updateOne, deleteOne} = require('../controllers/users');
-const userSchema = require("../models/user");
 
 const populate = { path: "salas", select: "nombre aforo" };
 /**Nuevos requests */
 router.get('/', getAll);
-router.post('/', createOne);
-router.put('/', updateOne);
-router.put('/', deleteOne);
+router.post('/', validate(userSchema), createOne);
+router.put('/:id', validate(userSchema), updateOne);
+router.put('/:id',  deleteOne);
 //crear usuario
-router.post("/usuarios", async(req, res) => {
+/* router.post("/usuarios", async(req, res) => {
     //const user = await userSchema(req.body)
     let user = await userSchema.findOne({ email: req.body.email });
     if (user) return res.status(400).send("Usuario ya existe en el sistema");
@@ -87,6 +88,6 @@ router.delete("/usuarios/:id", (req, res) => {
         .deleteOne({ _id: id })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
-});
+}); */
 
 module.exports = router;

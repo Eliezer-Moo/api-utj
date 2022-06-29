@@ -1,6 +1,8 @@
 const express = require('express')
 const {getAll, createOne, updateOne, deleteOne} = require('../controllers/rooms');
-const router = express.Router()
+const router = express.Router();
+const roomSchema = require("../schemas/rooms");
+const validate = require("../middleware/validateData");
 const auth = require('../middleware/auth')
 const admin = require('../middleware/admin')
 const authorize = require('../middleware/role')
@@ -9,10 +11,10 @@ const Role = require('../middleware/role')
     const res = require('express/lib/response'); */
 const salasSchema = require('../models/salas')
 router.get('/', getAll);
-router.post('/', createOne);
-router.put('/', updateOne);
+router.post('/',validate(roomSchema), createOne);
+router.put('/', validate(roomSchema),updateOne);
 router.put('/', deleteOne);
-//crear sala
+/* //crear sala
 router.post('/salas', auth, async(req, res) => {
     const sala = await salasSchema(req.body)
     sala
@@ -57,6 +59,6 @@ router.delete('/salas/:id', (req, res) => {
         .deleteOne({ _id: id })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }))
-})
+}) */
 
 module.exports = router;

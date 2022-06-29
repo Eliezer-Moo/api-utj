@@ -6,6 +6,10 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    doors:{
+        type: Number,
+        required:true
+    },
     capacity:{
         type: Number,
         required: true
@@ -15,6 +19,14 @@ const schema = new Schema({
         default: true,
         required: true
     },
+    users:[{
+        type: Schema.Types.ObjectId,
+        refs: 'users',
+    }],
+    devices:[{
+        type: Schema.Types.ObjectId,
+        refs: 'devices',
+    }],
     fecha: {type: Date, default: Date.now}
 })
 
