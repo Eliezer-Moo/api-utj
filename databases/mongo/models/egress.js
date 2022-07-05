@@ -9,6 +9,13 @@ const schema = new Schema({
       required: true,
     },
   ],
+  door: [
+    {
+      type: Schema.Types.ObjectId,
+      refs: 'rooms.door',
+      required: true,
+    },
+  ],
   fecha: { type: Date, default: Date.now },
 });
 

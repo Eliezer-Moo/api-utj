@@ -3,8 +3,9 @@ const {
 } = require("../../databases");
 
 module.exports = {
-  getAll: (req, res) => {
-    res.send("on line");
+  getAll: async (req, res) => {
+    const users = await usersModel.find({},{_id:0,__v:0,password:0});
+    res.json(users);
   },
   createOne: async (req, res) => {
     const { name, email, password } = req.body;

@@ -7,7 +7,7 @@ const schema = new Schema({
         required: true
     },
     doors:{
-        type: Number,
+        type: [String],
         required:true
     },
     capacity:{
