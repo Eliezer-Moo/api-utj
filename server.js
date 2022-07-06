@@ -6,6 +6,7 @@ const devicesRoutes = require('./src/routes/devices');
 const roomsRoutes = require('./src/routes/rooms');
 const ingressRoutes = require('./src/routes/ingress');
 const egressRoutes = require('./src/routes/egress');
+const doorsRoutes = require('./src/routes/doors');
 
 app.use(express.json());
 
@@ -14,6 +15,7 @@ app.use('/devices', devicesRoutes);
 app.use('/rooms', roomsRoutes);
 app.use('/ingress', ingressRoutes);
 app.use('/egress', egressRoutes);
+app.use('/doors', doorsRoutes);
 
 app.listen(port, ()=>{
     console.log('Server listen on port', port);

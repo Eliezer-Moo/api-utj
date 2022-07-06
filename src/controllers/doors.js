@@ -1,5 +1,3 @@
-const { mongo:{doorsModel}} = require('../../databases'); 
-
 module.exports ={
     getAll: (req, res)=>{
         res.send('on line');
