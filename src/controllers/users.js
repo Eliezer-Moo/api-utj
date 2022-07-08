@@ -15,7 +15,7 @@ module.exports = {
       password,
     });
     await newUser.save();
-    res.send("saved");
+    res.send(`${name} saved`);
   },
   updateOne: (req, res) => {
     res.send("on line");

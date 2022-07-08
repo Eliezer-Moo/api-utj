@@ -2,11 +2,12 @@ const Joi = require('@hapi/joi');
 
 const schema = Joi.object({
     name: Joi.string().required(),
-    doors: Joi.number().required(),
+    description: Joi.string().required(),
     capacity: Joi.number().required(),
     status: Joi.boolean(),
-    users: Joi.string(),
-    devices: Joi.string(),
+    doors: Joi.array(),
+    users: Joi.array(),
+    devices: Joi.array(),
 });
 
 module.exports = schema;

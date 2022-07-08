@@ -6,10 +6,10 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    doors:[{
-        type: Schema.Types.ObjectId,
-        refs:'doors'
-    }],
+    description:{
+        type: String,
+        required:true
+    },
     capacity:{
         type: Number,
         required: true
@@ -19,6 +19,10 @@ const schema = new Schema({
         default: true,
         required: true
     },
+    doors:[{
+        type: Schema.Types.ObjectId,
+        refs:'doors'
+    }],
     users:[{
         type: Schema.Types.ObjectId,
         refs: 'users',

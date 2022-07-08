@@ -13,6 +13,11 @@ const schema = new Schema({
     password:{
         type:String,
         required:true
+    },
+    status:{
+        type: Boolean,
+        default: true,
+        required: true
     }
 });
 

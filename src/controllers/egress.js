@@ -1,11 +1,15 @@
-const { mongo:{doorsModel}} = require('../../databases'); 
+const { mongo:{egressModel}} = require("../../databases"); 
 
 module.exports ={
-    getAll: (req, res)=>{
-        res.send('on line');
+    getAll: async (req, res)=>{
+        const egress = await egressModel.find({},{_id:0, __v:0});
+        res.json(egress);
     },
-    createOne: (req, res)=>{
-        res.send('on line');
+    createOne: async (req, res)=>{
+        const {device, door} = req.body;
+        const newEgress = new egressModel({device, door});
+        await newEgress.save();
+        res.send('saved');
     },
     updateOne: (req, res)=>{
         res.send('on line');

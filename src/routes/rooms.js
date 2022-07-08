@@ -12,8 +12,8 @@ const Role = require('../middleware/role')
 const salasSchema = require('../models/salas')
 router.get('/', getAll);
 router.post('/',validate(roomSchema), createOne);
-router.put('/', validate(roomSchema),updateOne);
-router.put('/', deleteOne);
+router.put('/:id', validate(roomSchema),updateOne);
+router.put('/:id', deleteOne);
 /* //crear sala
 router.post('/salas', auth, async(req, res) => {
     const sala = await salasSchema(req.body)

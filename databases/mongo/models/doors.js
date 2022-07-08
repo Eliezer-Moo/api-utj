@@ -6,14 +6,10 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    room:[{
-        type:Schema.Types.ObjectId,
-        refs:'rooms'
-    }],
-    device:[{
-        type: Schema.Types.ObjectId,
-        refs: 'devices',
-    }],
+    description:{
+        type: String,
+        required:true
+    }
 });
 
 const model = mongoose.model('doors', schema);

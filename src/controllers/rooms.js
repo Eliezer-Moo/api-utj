@@ -5,17 +5,17 @@ const {
 module.exports ={
 
     getAll: async (req, res)=>{
-        const rooms = await roomsModel.find({},{_id:0});
+        const rooms = await roomsModel.find({},{_id:0, __v:0});
         res.json(rooms);
     },
 
     createOne: async (req, res)=>{
-        const { name, doors, capacity, users, devices } = req.body;
+        const { name, description, doors, capacity, users } = req.body;
         const newRoom =  new roomsModel({
-            name, doors, capacity, users, devices
+            name, description, doors, capacity, users
         });
         await newRoom.save();
-        res.send('seved');
+        res.send(`${name} saved`);
     },
     updateOne: (req, res)=>{
         res.send('on line');

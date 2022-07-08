@@ -6,14 +6,12 @@ const schema = new Schema({
     {
       type: Schema.Types.ObjectId,
       refs: 'devices',
-      required: true,
     },
   ],
   door: [
     {
       type: Schema.Types.ObjectId,
-      refs: 'rooms.door',
-      required: true,
+      refs: 'doors',
     },
   ],
   fecha: { type: Date, default: Date.now },
