@@ -2,7 +2,7 @@ const { mongo:{doorsModel} } = require('../../databases');
 
 module.exports ={
     getAll: async (req, res)=>{
-        const doors = await doorsModel.find({},{_id:0, __v:0}); 
+        const doors = await doorsModel.find({},{ __v:0}); 
         res.json(doors);
     },
     createOne: async (req, res)=>{
@@ -11,8 +11,11 @@ module.exports ={
         await newDoor.save();
         res.send(`${name} saved`);
     },
-    updateOne: (req, res)=>{
-        res.send('on line');
+    updateOne: async (req, res)=>{
+        const {id} = req.params;
+        const {name, description} = req.body;
+        await doorsModel.findByIdAndUpdate( id, {$set:{name, description}});
+        res.send(`${name} updated`);
     },
     deleteOne: (req, res)=>{
         res.send('on line');
