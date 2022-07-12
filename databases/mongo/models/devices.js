@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+/**
+ * nameType: dato para llenar con un input libre
+ * room: dato para seleccionar con un select
+ * door: dato para seleccionar con un select
+ * users: dato seleccionado con la logica de la API
+ */
 const schema = new Schema({
   nameType: {
     type: String,

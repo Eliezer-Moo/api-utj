@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+/**
+ * Datos llenamos desde el módulo de IoT
+ */
 const schema = new Schema({
+  egres:{
+    type:String
+  },
   device: [
     {
       type: Schema.Types.ObjectId,

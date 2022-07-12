@@ -6,8 +6,8 @@ module.exports ={
         res.json(ingress);
 },
     createOne: async (req, res)=>{
-        const { device, door } = req.body;
-        const newIngress = new ingressModel({device, door});
+        const {ingres, device, door } = req.body;
+        const newIngress = new ingressModel({ingres, device, door});
         await newIngress.save();
         res.send('saved');
     },

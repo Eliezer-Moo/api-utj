@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
-
+/**
+ * name: tipo de dato para llenar con un input
+ * descripción: tipo de dato para llenar con un textarea
+ * capacity: tipo de dato para llenar con un input
+ * status: dato para llenar con actualización y borrado lógico
+ * doors: dato para para seleccionar de un select
+ * users: dato seleccionado con la lógica de la API
+ * devices: dato seleccionado de un select
+ */
 const schema = new Schema({
     name:{
         type: String,
