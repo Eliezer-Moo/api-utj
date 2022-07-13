@@ -17,7 +17,9 @@ module.exports ={
         await doorsModel.findByIdAndUpdate( id, {$set:{name, description}});
         res.send(`${name} updated`);
     },
-    deleteOne: (req, res)=>{
-        res.send('on line');
+    deleteOne: async (req, res)=>{
+        const {id} = req.params;
+        const deleteDoor = await doorsModel.findOneAndDelete(id);
+        res.send(`${deleteDoor.name} deleted from database`);
     }
 };

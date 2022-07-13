@@ -4,7 +4,7 @@ const { Schema } = mongoose;
  * Datos llenamos desde el módulo de IoT
  */
 const schema = new Schema({
-  ingres:{
+  ingress:{
     type: String
   },
   device: [
@@ -21,7 +21,7 @@ const schema = new Schema({
       required: true,
     },
   ],
-  fecha: { type: Date, default: Date.now },
+  date: { type: Date, default: Date.now },
 });
 
 const model = mongoose.model('ingress', schema);

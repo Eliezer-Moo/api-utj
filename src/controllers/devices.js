@@ -22,7 +22,10 @@ module.exports = {
         res.send(`${nameType} updated`);
         res.send("on line");
     },
-    deleteOne: (req, res) => {
-        res.send("on line");
+    deleteOne: async (req, res) => {
+        const {id} = req.params;
+        const removeDevice = await devicesModel.findOneAndDelete(id);
+        console.log(removeDevice);
+        res.send(`${removeDevice.nameType} deleted from database`);
     },
 };

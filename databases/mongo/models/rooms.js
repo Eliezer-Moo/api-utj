@@ -39,7 +39,7 @@ const schema = new Schema({
         type: Schema.Types.ObjectId,
         refs: 'devices',
     }],
-    fecha: {type: Date, default: Date.now}
+    date: {type: Date, default: Date.now}
 })
 
 const model = mongoose.model('rooms', schema);
