@@ -9,7 +9,13 @@ const schema = new Schema({
     description:{
         type: String,
         required:true
-    }
+    },
+    room: [
+        {
+          type: Schema.Types.ObjectId,
+          refs: "rooms",
+        },
+      ],
 });
 
 const model = mongoose.model('doors', schema);

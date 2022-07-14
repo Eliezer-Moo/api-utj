@@ -1,5 +1,5 @@
 const {
-    mongo: { roomsModel },
+    mongo: { roomsModel, doorsModel },
 } = require("../../databases");
 
 module.exports = {
@@ -33,4 +33,12 @@ module.exports = {
     deleteOne: (req, res) => {
         res.send("on line");
     },
+
+    addDoor:async( req, res)=>{
+        const {id} = req.params;
+        const {name, description} = req.body;
+        const newDoor = new doorsModel({name, description});
+        await newDoor.save();
+        res.send(`${name} door added`)
+    }
 };

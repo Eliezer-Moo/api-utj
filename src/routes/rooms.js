@@ -1,5 +1,5 @@
 const express = require('express')
-const {getAll, createOne, updateOne, deleteOne} = require('../controllers/rooms');
+const {getAll, createOne, updateOne, deleteOne, addDoor} = require('../controllers/rooms');
 const router = express.Router();
 const roomSchema = require("../schemas/rooms");
 const validate = require("../middleware/validateData");
@@ -14,6 +14,7 @@ router.get('/', getAll);
 router.post('/',validate(roomSchema), createOne);
 router.put('/:id', validate(roomSchema),updateOne);
 router.put('/:id', deleteOne);
+router.post('/addDoor/:id', addDoor);
 /* //crear sala
 router.post('/salas', auth, async(req, res) => {
     const sala = await salasSchema(req.body)
