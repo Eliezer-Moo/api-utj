@@ -28,6 +28,13 @@ module.exports ={
         const {nameType} = req.body;
         const newDevice = new devicesModel({nameType, door});
         await newDevice.save();
-        res.send(`${devicesModel.nameType} device assigned`);
+        res.send(`${newDevice.nameType} device assigned`);
+    },
+
+    removeDevice: async(req, res)=>{
+        const {id} = req.params;
+        const door = req.params.id;
+        const removeDevice = await devicesModel.findByIdAndUpdate(id, {$pull:{door:door},});
+        res.send(`${removeDevice.nameType} device removed`);
     }
 };

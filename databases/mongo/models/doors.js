@@ -16,7 +16,7 @@ const schema = new Schema({
           ref: "rooms",
         },
       ],
-});
+}, {timestamps:true});
 
 const model = mongoose.model('doors', schema);
 module.exports = model;

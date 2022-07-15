@@ -34,9 +34,8 @@ const schema = new Schema({
     users:[{
         type: Schema.Types.ObjectId,
         ref: 'users',
-    }],
-    date: {type: Date, default: Date.now}
-})
+    }]
+},{timestamps:true})
 
 const model = mongoose.model('rooms', schema);
 module.exports = model;

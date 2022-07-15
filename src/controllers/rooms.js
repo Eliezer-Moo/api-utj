@@ -39,6 +39,6 @@ module.exports = {
         const {name, description} = req.body;
         const newDoor = new doorsModel({name, description, room});
         await newDoor.save();
-        res.send(`${doorsModel.name} door added`)
+        res.send(`${newDoor.name} door added`)
     }
 };

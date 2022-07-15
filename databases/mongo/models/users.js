@@ -24,7 +24,7 @@ const schema = new Schema({
         default: true,
         required: true
     }
-});
+},{timestamps:true});
 
 const model = mongoose.model('users', schema);
 module.exports = model;

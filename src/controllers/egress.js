@@ -6,8 +6,8 @@ module.exports ={
         res.json(egress);
     },
     createOne: async (req, res)=>{
-        const {egres, device, door} = req.body;
-        const newEgress = new egressModel({egres, device, door});
+        const {egress, device, door} = req.body;
+        const newEgress = new egressModel({egress, device, door});
         await newEgress.save();
         res.send('saved');
     },
