@@ -13,7 +13,7 @@ const schema = new Schema({
     room: [
         {
           type: Schema.Types.ObjectId,
-          refs: "rooms",
+          ref: "rooms",
         },
       ],
 });

@@ -10,14 +10,7 @@ const schema = new Schema({
   device: [
     {
       type: Schema.Types.ObjectId,
-      refs: 'devices',
-      required: true,
-    },
-  ],
-  door: [
-    {
-      type: Schema.Types.ObjectId,
-      refs: 'rooms.door',
+      ref: 'devices',
       required: true,
     },
   ],

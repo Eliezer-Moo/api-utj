@@ -10,13 +10,7 @@ const schema = new Schema({
   device: [
     {
       type: Schema.Types.ObjectId,
-      refs: 'devices',
-    },
-  ],
-  door: [
-    {
-      type: Schema.Types.ObjectId,
-      refs: 'doors',
+      ref: 'devices',
     },
   ],
   date: { type: Date, default: Date.now },

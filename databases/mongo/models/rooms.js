@@ -29,15 +29,11 @@ const schema = new Schema({
     },
     doors:[{
         type: Schema.Types.ObjectId,
-        refs:'doors'
+        ref:'doors'
     }],
     users:[{
         type: Schema.Types.ObjectId,
-        refs: 'users',
-    }],
-    devices:[{
-        type: Schema.Types.ObjectId,
-        refs: 'devices',
+        ref: 'users',
     }],
     date: {type: Date, default: Date.now}
 })

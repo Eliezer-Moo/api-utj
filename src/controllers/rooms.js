@@ -4,7 +4,7 @@ const {
 
 module.exports = {
     getAll: async (req, res) => {
-        const rooms = await roomsModel.find({}, { _id: 0, __v: 0 });
+        const rooms = await roomsModel.find({}, { __v: 0 });
         res.json(rooms);
     },
     //Al crear un room solo se omiten los dispositivos para luego añadirlo en la actualización
@@ -23,9 +23,9 @@ module.exports = {
     //En la actualización de un room se añade los dispositivos instalados en sus puertas
     updateOne: async (req, res) => {
         const { id } = req.params;
-        const { name, description, doors, capacity, users, devices } = req.body;
+        const { name, description, doors, capacity, users, } = req.body;
         await roomsModel.findByIdAndUpdate(id, {
-            $set: { name, description, doors, capacity, users, devices },
+            $set: { name, description, doors, capacity, users },
         });
         res.send(`${name} updated`);
         res.send("on line");
@@ -35,10 +35,10 @@ module.exports = {
     },
 
     addDoor:async( req, res)=>{
-        const {id} = req.params;
+        const room = req.params.id;
         const {name, description} = req.body;
-        const newDoor = new doorsModel({name, description});
+        const newDoor = new doorsModel({name, description, room});
         await newDoor.save();
-        res.send(`${name} door added`)
+        res.send(`${doorsModel.name} door added`)
     }
 };

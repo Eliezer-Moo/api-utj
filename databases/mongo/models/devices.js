@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 /**
  * nameType: dato para llenar con un input libre
- * room: dato para seleccionar con un select
- * door: dato para seleccionar con un select
+ * door: dato ingresado desde parametro del request
  * users: dato seleccionado con la logica de la API
  */
 const schema = new Schema({
@@ -11,22 +10,10 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  room: [
-    {
-      type: Schema.Types.ObjectId,
-      refs: "rooms",
-    },
-  ],
   door: [
     {
       type: Schema.Types.ObjectId,
-      refs: "doors",
-    },
-  ],
-  users: [
-    {
-      type: Schema.Types.ObjectId,
-      refs: "users",
+      ref: "doors",
     },
   ],
 });

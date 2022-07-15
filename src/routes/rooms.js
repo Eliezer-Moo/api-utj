@@ -14,7 +14,7 @@ router.get('/', getAll);
 router.post('/',validate(roomSchema), createOne);
 router.put('/:id', validate(roomSchema),updateOne);
 router.put('/:id', deleteOne);
-router.post('/addDoor/:id', addDoor);
+router.post('/add-door/:id', addDoor);
 /* //crear sala
 router.post('/salas', auth, async(req, res) => {
     const sala = await salasSchema(req.body)

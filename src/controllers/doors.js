@@ -1,9 +1,10 @@
-const { mongo:{doorsModel} } = require('../../databases');
+const { mongo:{doorsModel, devicesModel} } = require('../../databases');
 
 module.exports ={
     getAll: async (req, res)=>{
-        const doors = await doorsModel.find({},{ __v:0}); 
-        res.json(doors);
+        await doorsModel.find({},{ __v:0}).populate('room','name').exec((error,doors)=>{
+            res.json(doors);
+        }); 
     },
     createOne: async (req, res)=>{
         const { name, description} = req.body;
@@ -21,5 +22,12 @@ module.exports ={
         const {id} = req.params;
         const deleteDoor = await doorsModel.findOneAndDelete(id);
         res.send(`${deleteDoor.name} deleted from database`);
+    },
+    addDevice: async (req,res)=>{
+        const door = req.params.id;
+        const {nameType} = req.body;
+        const newDevice = new devicesModel({nameType, door});
+        await newDevice.save();
+        res.send(`${devicesModel.nameType} device assigned`);
     }
 };
