@@ -1,5 +1,5 @@
 const faker = require('faker');
-const {ingressModel, egressModel} = require('../');
+const {ingressModel, egressModel, usersModel} = require('../');
 
 module.exports = async () =>{
     for (let i = 0; i < 10; i++) {
@@ -15,6 +15,14 @@ module.exports = async () =>{
         });
 
         await newEgress.save();
+
+        const newUsers = new usersModel({
+            name: faker.name.fullName,
+            email: faker.internet.exampleEmail,
+            password: "123456"
+        });
+
+        await newUsers.save();
         
     }
 };

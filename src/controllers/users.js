@@ -1,6 +1,7 @@
 const {
   mongo: { usersModel },
 } = require("../../databases");
+const { bcryptHelper:{encryptPassword}} = require('../../helpers')
 
 module.exports = {
   getAll: async (req, res) => {
@@ -9,13 +10,14 @@ module.exports = {
   },
   createOne: async (req, res) => {
     const { name, email, password } = req.body;
+    const encryptedPassword = await encryptPassword(password);
     const newUser = new usersModel({
       name,
       email,
-      password,
+      password:encryptedPassword
     });
     await newUser.save();
-    res.send(`${name} saved`);
+    res.send(`${newUser.name} saved`);
   },
   updateOne: async (req, res) => {
     const {id} = req.params;
@@ -26,4 +28,10 @@ module.exports = {
   deleteOne: (req, res) => {
     res.send("on line");
   },
+  signIn:(req,res) => {
+    res.send('signin')
+  },
+  signUp:(req,res) =>{
+    res.send('sign up')
+  }
 };

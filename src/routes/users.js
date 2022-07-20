@@ -6,14 +6,16 @@ const bcrypt = require('bcrypt')
     const res = require('express/lib/response'); */
 const router = express.Router();
 const userSchema = require("../schemas/users");
-const validate = require("../middleware/validateData");
-const {getAll, createOne, updateOne, deleteOne} = require('../controllers/users');
+const validateSchema = require("../middleware/validateData");
+const {getAll, createOne, updateOne, deleteOne, signIn, signUp} = require('../controllers/users');
 
 const populate = { path: "salas", select: "nombre aforo" };
 /**Nuevos requests */
 router.get('/', getAll);
-router.post('/', validate(userSchema), createOne);
-router.put('/:id', validate(userSchema), updateOne);
+router.post('/', validateSchema(userSchema), createOne);
+router.post('/sign-in', validateSchema(userSchema), signIn);
+router.post('/sing-up', validateSchema(userSchema), signUp);
+router.put('/:id', validateSchema(userSchema), updateOne);
 router.put('/:id',  deleteOne);
 //crear usuario
 /* router.post("/usuarios", async(req, res) => {

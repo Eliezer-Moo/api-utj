@@ -5,7 +5,7 @@ module.exports ={
     getAll: async (req, res)=>{
         //const ingress = await ingressModel.find({},{_id:0, __v:0})
         
-        const ingress = await ingressModel.find({},{_id:0, __v:0, device:0, ingress:0})
+        const ingress = await ingressModel.find({},{_id:0, __v:0, device:0, ingress:0}).sort({date:1})
         ingress.forEach(dateC =>{
             let fecha = momment(dateC.date).format('L');
             ingress.date = fecha;
