@@ -12,4 +12,10 @@ const encryptPassword = async (password) =>{
     return await bcrypt.hashSync(password, salt);
 };
 
-module.exports = {encryptPassword};
+/**funcion para comparar la contraseña que ingresa el usuari
+ *  con la que esta almacenada en la base de datos */
+const comparePassword = async(passwordFromClient, encryptedPassword) =>{
+    return await bcrypt.compareSync(passwordFromClient, encryptedPassword);
+};
+
+module.exports = {encryptPassword, comparePassword};

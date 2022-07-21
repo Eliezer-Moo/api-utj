@@ -1,7 +1,10 @@
+const jwt = require('jsonwebtoken');
+const {jwtSecret} = require('../../config');
+
 const {
   mongo: { usersModel },
 } = require("../../databases");
-const { bcryptHelper:{encryptPassword}} = require('../../helpers')
+const { bcryptHelper:{encryptPassword, comparePassword }} = require('../../helpers')
 
 module.exports = {
   getAll: async (req, res) => {
@@ -9,6 +12,8 @@ module.exports = {
     res.json(users);
   },
   createOne: async (req, res) => {
+    const user = await usersModel.findOne({email: req.body.email});
+    if(user) return res.status(400).send(`the email ${user.email} exists in the system`);
     const { name, email, password } = req.body;
     const encryptedPassword = await encryptPassword(password);
     const newUser = new usersModel({
@@ -28,8 +33,14 @@ module.exports = {
   deleteOne: (req, res) => {
     res.send("on line");
   },
-  signIn:(req,res) => {
-    res.send('signin')
+  signIn: async (req,res) => {
+    const {email, password} = req.body;
+    const userFound = await usersModel.findOne({email},{__v:0});
+    if(!userFound) return res.send(`Email ${email} not registered`);
+    const isCorrectPassword = await comparePassword(password, userFound.password);
+    if(!isCorrectPassword) return res.send('Email or password is incorrect');
+    const tokenjwt = jwt.sign(JSON.stringify(userFound), jwtSecret);
+    res.json({message:`${userFound.email} welcome `, tokenjwt});
   },
   signUp:(req,res) =>{
     res.send('sign up')

@@ -16,13 +16,13 @@ module.exports = async () =>{
 
         await newEgress.save();
 
-        const newUsers = new usersModel({
+        /* const newUsers = new usersModel({
             name: faker.name.fullName,
             email: faker.internet.exampleEmail,
             password: "123456"
         });
 
-        await newUsers.save();
+        await newUsers.save(); */
         
     }
 };
