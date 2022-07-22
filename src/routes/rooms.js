@@ -1,16 +1,19 @@
 const express = require('express')
-const {getAll, createOne, updateOne, deleteOne, addDoor} = require('../controllers/rooms');
 const router = express.Router();
+
+const {getAll, createOne, updateOne, deleteOne, addDoor} = require('../controllers/rooms');
 const roomSchema = require("../schemas/rooms");
+
 const validate = require("../middleware/validateData");
-const auth = require('../middleware/auth')
-const admin = require('../middleware/admin')
-const authorize = require('../middleware/role')
-const Role = require('../middleware/role')
+const validateAuth = require('../middleware/validateAuth');
+//const auth = require('../middleware/auth')
+//const admin = require('../middleware/admin')
+//const authorize = require('../middleware/role')
+//const Role = require('../middleware/role')
     /* const { append } = require('express/lib/response');
     const res = require('express/lib/response'); */
-const salasSchema = require('../models/salas')
-router.get('/', getAll);
+//const salasSchema = require('../models/salas')
+router.get('/', validateAuth, getAll);
 router.post('/',validate(roomSchema), createOne);
 router.put('/:id', validate(roomSchema),updateOne);
 router.put('/:id', deleteOne);
