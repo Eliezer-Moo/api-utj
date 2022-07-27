@@ -1,10 +1,10 @@
 
-*1 comando para iniciar proyecto con json
+## comandos para iniciar proyecto con json
 npm -y init 
-*2 implementar express en el proyecto
+## implementar express en el proyecto
 npm install express
-*3 levantar servidor
-node server.js
+## levantar servidor
+node server
 
 
 Para levantar el servidor mongo
@@ -27,3 +27,33 @@ db.createCollection('nombre')
 instalar monoose para conectar la api con mongodb atlas
 
 instalar dotenv para crear un ambiente de desarrollo
+
+## Despues de clonar el proyecto en local ejecutar el comando
+npm install
+
+## Al terminar de instalar las dependencias
+- Crear el archivo .env apartir de .env.example
+
+## Comando para levantar el server en local
+npm run dev
+
+## endpoint de las collections
+
+ingresos 
+https://node-api-iot.herokuapp.com/ingress
+
+egresos
+https://node-api-iot.herokuapp.com/ingress
+
+salas
+https://node-api-iot.herokuapp.com/rooms
+
+usuarios
+https://node-api-iot.herokuapp.com/users
+
+puertas
+https://node-api-iot.herokuapp.com/doors
+
+dispositivos
+https://node-api-iot.herokuapp.com/devices
+
