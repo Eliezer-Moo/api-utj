@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const TZ = 'America/Mexico-City';
 
 const { environmentUtils: {validateRequiredEnvs},} = require('./utils');
 /**array de las varialbes de entorno */
