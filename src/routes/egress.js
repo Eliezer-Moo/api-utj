@@ -6,7 +6,7 @@ const egressSchema = require('../schemas/egress');
 const validate = require('../middleware/validateData');
 
 router.get('/', validate(egressSchema), getAll);
-router.post('/', validate(egressSchema), createOne);
+router.post('/', createOne);
 router.put('/:id', updateOne);
 router.put('/:id', deleteOne);
 

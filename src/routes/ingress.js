@@ -6,7 +6,7 @@ const ingressSchema = require('../schemas/ingress');
 const validate = require('../middleware/validateData');
 
 router.get('/', getAll);
-router.post('/', validate(ingressSchema), createOne);
+router.post('/', createOne);
 router.put('/:id', validate(ingressSchema), updateOne);
 router.put('/:id', deleteOne);
 
