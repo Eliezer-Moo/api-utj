@@ -13,7 +13,7 @@ const validateAuth = require('../middleware/validateAuth');
     /* const { append } = require('express/lib/response');
     const res = require('express/lib/response'); */
 //const salasSchema = require('../models/salas')
-router.get('/', validateAuth, getAll);
+router.get('/', getAll);
 router.post('/',validate(roomSchema), createOne);
 router.put('/:id', validate(roomSchema),updateOne);
 router.put('/:id', deleteOne);
